@@ -22,7 +22,7 @@ class RabbitMQCollection implements CheckCollectionInterface
             }
 
             if (isset($config['path'])) {
-                $config['vhost'] = $config['path'];
+                $config['vhost'] = urldecode(substr($config['path'], 1));
             }
 
             $check = new RabbitMQ($config['host'], $config['port'], $config['user'], $config['password'], $config['vhost']);
